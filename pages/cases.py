@@ -7,6 +7,7 @@ from langchain.schema import (
     AIMessage
 )
 import content
+from main import move_focus
 
 st.set_page_config(
     page_title="Высшая Школа Ремонта",
@@ -94,5 +95,6 @@ if selected_case:
             st.chat_message(content.AI_TYPE).write(answer_result.content)
             db_manager.add_message(case_id=case_data["_id"], role=content.AI_TYPE, content=answer_result.content)
             st.session_state["messages"].append(AIMessage(content=answer_result.content))
+            move_focus()
     else:
         st.error('Ошибка. Кейса не существует.', icon="🚨")
