@@ -108,5 +108,6 @@ if selected_case:
             db_manager.add_message(case_id=case_data["_id"], role=content.AI_TYPE, content=answer_result.content)
             st.session_state["messages"].append(AIMessage(content=answer_result.content))
             move_focus()
+        st._bottom.divider()
     else:
         st.error('Ошибка. Кейса не существует.', icon="🚨")
