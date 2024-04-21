@@ -1,6 +1,5 @@
 import streamlit as st
 from setup import db_manager
-from streamlit_option_menu import option_menu
 from datetime import datetime
 import hmac
 
