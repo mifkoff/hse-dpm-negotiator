@@ -94,7 +94,7 @@ if selected_case:
             st.chat_message(content.AI_TYPE).write(answer_result.content)
             db_manager.add_message(case_id=case_data["_id"], role=content.AI_TYPE, content=answer_result.content)
             st.session_state["messages"].append(AIMessage(content=answer_result.content))
-        components.html(
+        st.html(
             f"""
                 <script>
                     var input = window.parent.document.querySelectorAll("input[type=text]");
