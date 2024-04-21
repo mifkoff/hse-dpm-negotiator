@@ -19,7 +19,7 @@ class DatabaseManager:
     # User-related operations
     def add_user(self, user_id, name, cases_id=[]):
         user = {
-            "id": user_id,
+            "id": int(user_id),
             "name": name,
             "cases_id": cases_id,
             "is_admin": False,
@@ -46,7 +46,7 @@ class DatabaseManager:
     def add_case(self, title, user_id, case_type, counterparty_name, budget, starting_price, target_price, incoming_offer, messages_id=[]):
         case = {
             "title": title,
-            "user_id": user_id,
+            "user_id": int(user_id),
             "messages_id": messages_id,
             "case_type": case_type,
             "counterparty_name": counterparty_name,
