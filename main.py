@@ -43,6 +43,18 @@ st.html('<script src="https://telegram.org/js/telegram-web-app.js"></script>')
 st.title("😎 Ваш помощник в торге")
 st.header("Добавьте новый кейс:")
 
+def move_focus():
+    st.components.v1.html(
+        f"""
+            <script>
+                var textarea = window.parent.document.querySelectorAll("textarea[type=textarea]");
+                for (var i = 0; i < textarea.length; ++i) {{
+                    textarea[i].focus();
+                }}
+            </script>
+        """,
+    )
+
 # loading
 try:
     user_id = st.query_params["user_id"]
@@ -93,6 +105,7 @@ with st.form('Add new case here:'):
         key="budget",
     )
     submitted = st.form_submit_button("Submit")
+    move_focus()
     if submitted and all([deal_type, counterparty_name, counterparty_offer_text, counterparty_offer_price, budget]):
         current_datetime = datetime.now()
         formatted_datetime = current_datetime.strftime("%d/%m/%Y %H:%M")
