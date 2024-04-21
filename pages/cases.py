@@ -94,7 +94,7 @@ if selected_case:
             st.chat_message(content.AI_TYPE).write(answer_result.content)
             db_manager.add_message(case_id=case_data["_id"], role=content.AI_TYPE, content=answer_result.content)
             st.session_state["messages"].append(AIMessage(content=answer_result.content))
-        with st.container(height=300):
-            st.markdown(content.INSTRUCTIONS_TEXT)
+        container = st.container(border=False, height=250)
+        container.write(content.INSTRUCTIONS_TEXT)
     else:
         st.error('Ошибка. Кейса не существует.', icon="🚨")
