@@ -96,5 +96,6 @@ if selected_case:
             st.session_state["messages"].append(AIMessage(content=answer_result.content))
     else:
         st.error('Ошибка. Кейса не существует.', icon="🚨")
-container = st.container(border=False, height=250)
-container.write(content.INSTRUCTIONS_TEXT)
+st.warning(content.INSTRUCTIONS_TEXT)
+# container = st.container(border=False, height=250)
+# container.write(content.INSTRUCTIONS_TEXT)
