@@ -7,7 +7,6 @@ from langchain.schema import (
     AIMessage
 )
 import content
-from main import move_focus
 
 st.set_page_config(
     page_title="Высшая Школа Ремонта",
@@ -35,6 +34,19 @@ with st.sidebar:
     st.page_link("pages/cases.py", label="Список кейсов", icon="📃")
     st.write('---')
     content.INSTRUCTIONS_TEXT
+
+def move_focus():
+    st.components.v1.html(
+        f"""
+            <script>
+                var textarea = window.parent.document.querySelectorAll("textarea[type=textarea]");
+                for (var i = 0; i < textarea.length; ++i) {{
+                    textarea[i].focus();
+                }}
+            </script>
+        """,
+    )
+
 
 # Case selection
 selected_case = st.selectbox(
