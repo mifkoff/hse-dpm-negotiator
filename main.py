@@ -105,7 +105,6 @@ with st.form('Add new case here:'):
         key="budget",
     )
     submitted = st.form_submit_button("Submit")
-    move_focus()
     if submitted and all([deal_type, counterparty_name, counterparty_offer_text, counterparty_offer_price, budget]):
         current_datetime = datetime.now()
         formatted_datetime = current_datetime.strftime("%d/%m/%Y %H:%M")
@@ -124,3 +123,4 @@ with st.form('Add new case here:'):
         st.switch_page("pages/cases.py")
     else:
         st.warning("Все поля обязательные.", icon="🚨")
+        move_focus()
