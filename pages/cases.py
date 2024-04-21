@@ -35,19 +35,6 @@ with st.sidebar:
     st.write('---')
     content.INSTRUCTIONS_TEXT
 
-def move_focus():
-    st.components.v1.html(
-        f"""
-            <script>
-                var textarea = window.parent.document.querySelectorAll("textarea[type=textarea]");
-                for (var i = 0; i < textarea.length; ++i) {{
-                    textarea[i].focus();
-                }}
-            </script>
-        """,
-    )
-
-
 # Case selection
 selected_case = st.selectbox(
     'Выберите рассматриваемый кейс',
@@ -107,7 +94,16 @@ if selected_case:
             st.chat_message(content.AI_TYPE).write(answer_result.content)
             db_manager.add_message(case_id=case_data["_id"], role=content.AI_TYPE, content=answer_result.content)
             st.session_state["messages"].append(AIMessage(content=answer_result.content))
-            move_focus()
-        st._bottom.divider()
+        components.html(
+            f"""
+                <script>
+                    var input = window.parent.document.querySelectorAll("input[type=text]");
+                    for (var i = 0; i < input.length; ++i) {{
+                        input[i].focus();
+                    }}
+            </script>
+            """,
+            height=0,
+        )
     else:
         st.error('Ошибка. Кейса не существует.', icon="🚨")
