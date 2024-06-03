@@ -35,8 +35,8 @@ def check_password():
     return False
 
 
-if not check_password():
-    st.stop()
+# if not check_password():
+#     st.stop()
 
 # import telegram webapp js
 st.html('<script src="https://telegram.org/js/telegram-web-app.js"></script>')
